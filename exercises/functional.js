@@ -1,4 +1,6 @@
-var exercises = {};
+// Explicitly require lodash lib
+var _ = require("lodash"),
+  exercises = {};
 
 // 8 points
 // this function takes a variable number of string arguments
@@ -7,6 +9,15 @@ var exercises = {};
 // "waldo"
 exercises.wheresWaldo = function() {
   // TODO: implement me
+  var foundString;
+
+  _.each(arguments, function(val, index) {
+    if (val.indexOf("waldo") > -1) {
+      foundString = val;
+    }
+  });
+
+  return foundString;
 };
 
 // 8 points
@@ -15,6 +26,18 @@ exercises.wheresWaldo = function() {
 // use _.chain() and _.map() and _.max()
 exercises.largestNums = function(arrayOfNumberArrays) {
   // TODO: implement me
+  var largestArray = [],
+    curVal;
+
+  _.map(arrayOfNumberArrays, function(val) {
+    _.chain(val).map(function(val) {
+    }).value();
+
+    curVal = _.chain(val).max().value();
+    largestArray.push(curVal);
+  });
+
+  return largestArray;
 };
 
 // 8 points
@@ -23,6 +46,16 @@ exercises.largestNums = function(arrayOfNumberArrays) {
 // the objects from dates that fit within the given boundaries
 exercises.filterDates = function(dates, lowerBound, upperBound) {
   // TODO: implement me
+  var boundDates = [],
+    myDates;
+
+  myDates = _.filter(dates, function(date) {
+    if (date > lowerBound && date < upperBound) {
+      boundDates.push(date);
+    }
+  });
+
+  return boundDates;
 };
 
 // 16 points (including the test)
@@ -31,5 +64,15 @@ exercises.filterDates = function(dates, lowerBound, upperBound) {
 // for 4 extra credit points, use _.reduce()
 // exercises.TODO = function(array) {
 // };
+exercises.reducePrices = function(prices) {
+
+  var mySum;
+
+  mySum = _.reduce(prices, function(sum, num) {
+    return sum + num;
+  });
+
+  return mySum.toFixed(2);
+};
 
 module.exports = exercises;

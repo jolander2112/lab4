@@ -1,5 +1,5 @@
 var expect = require("../node_modules/chai/chai").expect,
-    functional = require("../exercises/functional");
+  functional = require("../exercises/functional");
 
 describe("Functional", function() {
 
@@ -46,6 +46,17 @@ describe("Functional", function() {
   // function argument.
   // TODO: write a test for the custom method you wrote
   // in exercises/functional.js
-  it("should test the exercise you wrote yourself");
+  // it("should test the exercise you wrote yourself");
+  it("should reduce prices", function() {
+    // Array to test
+    var prices = [ 10.50, 7.25, 21.12, 15.03 ],
+      result;
+
+    // Call method
+    result = functional.reducePrices(prices);
+
+    // use equal to compare primitives
+    expect(result).to.eql("53.90");
+  });
 
 });
